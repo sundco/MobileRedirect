@@ -10,67 +10,59 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 
 	<script>
+
+	// Set Cookie Before The DOM loads
+
 	function setCookie(c_name,value,exdays)
-{
-
-// Change the below domain name to your domain name
-var domainName = "example.com";
-var exdate=new Date();
-exdate.setDate(exdate.getDate() + exdays);
-var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString())+ ";domain=."+domainName+".com;path=/";
-document.cookie=c_name + "=" + c_value;
-document.cookie = c_name +"=" + value + ";expires=" + exdays 
+	{
+	// Change the below domain name to your domain name
+	var domainName = "example.com";
+	var exdate=new Date();
+	exdate.setDate(exdate.getDate() + exdays);
+	var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString())+ ";domain=."+domainName+".com;path=/";
+	document.cookie=c_name + "=" + c_value;
+	document.cookie = c_name +"=" + value + ";expires=" + exdays 
                   + ";domain=."+domainName+".com;path=/";
-window.location.href = "http://www."+domainName;
-		$(function(){
+	window.location.href = "http://www."+domainName;
+	}
 
-			//var width = $(window.screen).width();
-			//var height = $(window.screen).height();
 
-      		var width = $(window).width();
-			var height = $(window).height();
+	// Do More Stuff After the DOM loads using JQ
 
-			//if ((width >= 1024  ) && (height>=768)) {
-			//if ((height < 888)) { // 888 is magic number on iPhone 5
-				//$('div#text').css("display","none");
-			//}
-
+	$(function(){
+      var width = $(window).width();
+	  var height = $(window).height();
       var aspectRatio = height/width;
 
-      if ( aspectRatio > 1.35 ) {
-        $('div#text').css("display","block");
-        $('div#text').css("font-size","25px");
-        $('div#text').css("line-height","1.2em");
-        $('div#text').css("margin-top","80px");
-      }
+    if ( aspectRatio > 1.35 ) {
+       $('div#text').css("display","block");
+       $('div#text').css("font-size","25px");
+       $('div#text').css("line-height","1.2em");
+       $('div#text').css("margin-top","80px");
+    }
 
-			// Hide the address bar
+	// Hide the address bar
     window.addEventListener('load', function() {
-    setTimeout(function(){
-	window.scrollTo(0, 1); }, 0);
-			});
-			});
-			});
+   		setTimeout(function(){
+		window.scrollTo(0, 1); }, 0);
+		});
+	});
 
-			// If its iOS open Apple Maps if not open Google Maps
-			function mapOpen() {
-				var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );
-				var link = "maps?gl=us&daddr=413+Terrace+Pl,+Terrace+Park,+OH+45174&panel=1&f=d&fb=1&dirflg=d&geocode=0,39.162659,-84.308471&cid=0,0,5122525955924967621&hq=wiebold+studios";
-				if(iOS) {
-					window.location.href = "https://maps.apple.com/"+link;
+	// If its iOS open Apple Maps if not open Google Maps
+	function mapOpen() {
+		var iOS = ( navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? true : false );
+		var link = "maps?gl=us&daddr=413+Terrace+Pl,+Terrace+Park,+OH+45174&panel=1&f=d&fb=1&dirflg=d&geocode=0,39.162659,-84.308471&cid=0,0,5122525955924967621&hq=wiebold+studios";
+		if(iOS) {
+				window.location.href = "https://maps.apple.com/"+link;
 				}
-				else {
-					window.location.href = "https://maps.google.com/"+link;
+		else {
+				window.location.href = "https://maps.google.com/"+link;
 				}
-			}
+	}
 
 	</script>
 
 </head>
 <body>
-
-<div id="bg_container">
-
- </div><!-- #viewport -->
 </body>
 </html>
